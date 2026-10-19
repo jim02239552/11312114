@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5ed">
+  <title>今天吃什麼？｜一分鐘餐點靈感</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap');
+    :root{--ink:#21372d;--muted:#728078;--green:#53765b;--green-dark:#31583d;--cream:#f7f5ed;--card:#fffefa;--line:#e8e9df;--orange:#eb8b54;--shadow:0 24px 70px rgba(34,55,43,.09)}
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:var(--cream);color:var(--ink);font-family:'DM Sans','Noto Sans TC',sans-serif;overflow-x:hidden}
+    body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(1px);pointer-events:none}body:before{width:420px;height:420px;top:-170px;right:-130px;background:#e5ead7}body:after{width:340px;height:340px;bottom:-170px;left:-110px;background:#f2e5d3}
+    .shell{width:min(100% - 36px,1040px);margin:0 auto;padding:28px 0 48px}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:46px}.brand{display:flex;gap:11px;align-items:center;font-size:15px;font-weight:800;letter-spacing:.02em}.brand-mark{width:38px;height:38px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:20px;box-shadow:0 7px 18px #53765b33}.top-note{font-size:12px;color:var(--muted);letter-spacing:.08em}
+    .layout{display:grid;grid-template-columns: .92fr 1.08fr;gap:64px;align-items:center}.intro{padding:0 0 36px 10px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green-dark);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.eyebrow:before{content:"";width:22px;height:1px;background:var(--orange)}h1{font-size:clamp(42px,5.2vw,68px);line-height:1.13;letter-spacing:-.055em;margin:20px 0 18px;font-weight:800}h1 em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}h1 em:after{content:"";position:absolute;height:10px;background:#e9b17755;left:1px;right:0;bottom:3px;z-index:-1;border-radius:8px}.intro p{max-width:345px;color:var(--muted);font-size:15px;line-height:1.9;margin:0}.food-doodle{margin-top:39px;width:100%;max-width:350px;min-height:133px;border:1px solid #e7e6db;border-radius:24px;background:rgba(255,254,250,.65);display:flex;align-items:center;justify-content:center;gap:17px;position:relative;overflow:hidden}.food-doodle:after{content:"MEAL MOOD";position:absolute;right:17px;bottom:13px;font-size:9px;letter-spacing:.16em;color:#a3aa9e}.food-icon{font-size:40px;filter:drop-shadow(0 8px 8px #3a4a3018);animation:bob 3s ease-in-out infinite}.food-icon:nth-child(2){animation-delay:.35s}.food-icon:nth-child(3){animation-delay:.7s}.food-icon:nth-child(4){animation-delay:1.05s}@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+    .panel{min-height:518px;background:var(--card);border:1px solid #eeeee6;border-radius:30px;padding:34px 36px 28px;box-shadow:var(--shadow);position:relative;overflow:hidden}.panel:before{content:"";position:absolute;width:130px;height:130px;background:#f6f0e4;border-radius:50%;top:-81px;right:-38px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:27px;position:relative}.step-label{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.11em}.step-label strong{color:var(--green-dark);font-size:14px}.progress{height:5px;background:#edf0e8;border-radius:99px;margin-top:13px;overflow:hidden}.progress span{display:block;width:20%;height:100%;background:var(--green);border-radius:99px;transition:width .35s ease}.tiny-spark{font-size:25px;color:var(--orange)}.question{font-size:25px;line-height:1.4;letter-spacing:-.025em;margin:0 0 7px;font-weight:800}.subquestion{margin:0 0 25px;color:var(--muted);font-size:13px;line-height:1.7}.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choice{appearance:none;border:1px solid var(--line);background:#fff;border-radius:17px;padding:16px 17px;min-height:79px;text-align:left;display:flex;align-items:center;gap:14px;color:var(--ink);font:inherit;cursor:pointer;transition:transform .18s,border-color .18s,background .18s,box-shadow .18s}.choice:hover{transform:translateY(-2px);border-color:#9bb09b;box-shadow:0 9px 22px #32493212}.choice.selected{background:#eff4ec;border-color:var(--green);box-shadow:0 0 0 2px #53765b18}.choice-icon{flex:0 0 41px;height:41px;display:grid;place-items:center;border-radius:14px;background:#f5f4ed;font-size:21px}.choice-copy{display:flex;flex-direction:column;gap:4px}.choice-copy b{font-size:14px}.choice-copy small{font-size:11px;color:var(--muted)}.choice-check{margin-left:auto;width:18px;height:18px;border-radius:50%;border:1px solid #d9ded5;display:grid;place-items:center;font-size:11px;color:transparent;flex:0 0 18px}.selected .choice-check{background:var(--green);border-color:var(--green);color:white}
+    .panel-foot{display:flex;align-items:center;justify-content:space-between;margin-top:28px;padding-top:18px;border-top:1px solid #f0f0ea}.back{border:0;background:transparent;color:var(--muted);font:600 13px 'DM Sans','Noto Sans TC',sans-serif;cursor:pointer;padding:10px 0;visibility:hidden}.back.visible{visibility:visible}.back:hover{color:var(--ink)}.next{border:0;border-radius:13px;padding:13px 20px;background:var(--green);color:white;font:700 13px 'DM Sans','Noto Sans TC',sans-serif;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .2s,transform .2s;opacity:.45;pointer-events:none}.next.ready{opacity:1;pointer-events:auto}.next:hover{background:var(--green-dark);transform:translateY(-1px)}.next span{font-size:17px;line-height:12px}.footer{text-align:center;color:#90998f;font-size:11px;margin-top:25px;letter-spacing:.04em}
+    .result-wrap{display:none;animation:appear .35s ease}.result-wrap.show{display:block}.quiz.hide{display:none}@keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}.result-top{text-align:center;padding:4px 0 13px}.result-badge{display:inline-flex;gap:7px;align-items:center;padding:7px 12px;background:#eef4ea;border-radius:99px;color:var(--green-dark);font-size:11px;font-weight:700;letter-spacing:.05em}.result-emoji{font-size:58px;margin:18px 0 8px;line-height:1.2}.result-title{font-size:29px;font-weight:800;letter-spacing:-.04em;margin:0 0 8px}.result-desc{font-size:13px;line-height:1.8;color:var(--muted);margin:0 auto;max-width:340px}.result-meta{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:17px 0 18px}.pill{padding:7px 10px;border:1px solid var(--line);border-radius:99px;color:#66736a;font-size:11px}.result-actions{display:flex;justify-content:center;gap:10px;margin-top:21px}.restart,.swap{border-radius:13px;padding:12px 17px;font:700 12px 'DM Sans','Noto Sans TC',sans-serif;cursor:pointer}.restart{border:1px solid var(--line);background:white;color:var(--ink)}.swap{border:0;background:var(--green);color:white}.restart:hover{background:#f5f5ef}.swap:hover{background:var(--green-dark)}.tiny-note{color:#9aa298;font-size:10px;margin-top:17px}
+    @media(max-width:760px){.shell{width:min(100% - 28px,520px);padding-top:19px}.topbar{margin-bottom:28px}.top-note{font-size:10px}.layout{grid-template-columns:1fr;gap:22px}.intro{padding:0}.intro h1{font-size:43px;margin:12px 0}.intro p{font-size:13px;max-width:100%}.food-doodle{display:none}.panel{min-height:unset;padding:25px 21px 19px;border-radius:24px}.panel-head{margin-bottom:21px}.question{font-size:22px}.choices{gap:9px}.choice{padding:12px 11px;gap:9px;min-height:75px}.choice-icon{flex-basis:35px;height:35px;font-size:19px;border-radius:12px}.choice-copy b{font-size:13px}.choice-copy small{font-size:10px}.panel-foot{margin-top:22px}.footer{margin-top:17px}}
+    @media(max-width:370px){.choices{grid-template-columns:1fr}.choice{min-height:65px}.panel{padding:22px 17px 17px}.intro h1{font-size:38px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-mark">食</span><span>好好吃飯研究所</span></div><div class="top-note">YOUR DAILY MEAL PICKER</div></header>
+    <div class="layout">
+      <section class="intro"><div class="eyebrow">A little help for your appetite</div><h1>今天，<br>我們來決定<br><em>吃什麼。</em></h1><p>跟著直覺回答五個小問題，把「不知道吃什麼」變成一份剛剛好的餐點靈感。</p><div class="food-doodle" aria-hidden="true"><span class="food-icon">🥑</span><span class="food-icon">🍜</span><span class="food-icon">🍙</span><span class="food-icon">🥗</span></div></section>
+      <section class="panel" aria-live="polite">
+        <div class="quiz" id="quiz"><div class="panel-head"><div style="flex:1"><div class="step-label">QUESTION <strong id="stepNum">01</strong> <span style="color:#a8afa7">/ 05</span></div><div class="progress"><span id="progressBar"></span></div></div><div class="tiny-spark">✳</div></div><h2 class="question" id="question"></h2><p class="subquestion" id="subquestion"></p><div class="choices" id="choices"></div><div class="panel-foot"><button class="back" id="backBtn" type="button">← 上一題</button><button class="next" id="nextBtn" type="button">下一題 <span>→</span></button></div></div>
+        <div class="result-wrap" id="result"><div class="result-top"><div class="result-badge">✦ 今日餐點靈感</div><div class="result-emoji" id="resultEmoji">🍜</div><h2 class="result-title" id="resultTitle"></h2><p class="result-desc" id="resultDesc"></p><div class="result-meta" id="resultMeta"></div><div class="result-actions"><button class="restart" id="restartBtn" type="button">重新回答</button><button class="swap" id="swapBtn" type="button">再給我一個靈感 ↗</button></div><div class="tiny-note">靈感只是起點，今天想吃的就是最好的選擇。</div></div></div>
+      </section>
+    </div>
+    <div class="footer">MADE FOR THE MOMENT YOU ASK, “WHAT SHOULD I EAT?”</div>
+  </main>
+<script>
+  const questions = [
+    { title: '你現在想決定哪一餐？', hint: '先選一餐，接著跟著直覺回答就好。', options: [
+      {label:'早餐', detail:'一天的第一口', icon:'🌤️'}, {label:'午餐', detail:'補充今天的能量', icon:'☀️'}, {label:'晚餐', detail:'好好收尾這一天', icon:'🌙'}
+    ]},
+    { title: '今天想吃哪種風格？', hint: '選一個現在看起來最對味的方向。', options: [
+      {label:'中式家常', detail:'熟悉、暖心又下飯', icon:'🥢'}, {label:'西式輕鬆', detail:'換個口味也不錯', icon:'🍴'}
+    ]},
+    { title: '主食想來點什麼？', hint: '你的直覺是飯，還是麵呢？', options: [
+      {label:'飯類', detail:'粒粒飽足感', icon:'🍚'}, {label:'麵類', detail:'吸附滿滿好滋味', icon:'🍜'}
+    ]},
+    { title: '今天的味道想偏哪邊？', hint: '挑一種最符合現在心情的味道。', options: [
+      {label:'清爽清淡', detail:'舒服無負擔', icon:'🌿'}, {label:'濃郁夠味', detail:'來點滿足感', icon:'🌶️'}
+    ]},
+    { title: '今天想吃得多滿足？', hint: '最後一題，選好就揭曉你的餐點！', options: [
+      {label:'吃飽飽', detail:'需要一份完整正餐', icon:'🍱'}, {label:'輕輕吃', detail:'簡單補充剛剛好', icon:'🥣'}
+    ]}
+  ];
+  const mealIdeas = {
+    breakfast: {
+      '中式家常': {rice:{light:['蔬菜蛋粥','鮪魚飯糰配味噌湯'],rich:['雞肉飯糰加茶葉蛋','香菇肉燥粥']},noodles:{light:['清湯米粉','蔬菜湯麵'],rich:['鍋燒意麵','麻醬乾麵配蛋']}},
+      '西式輕鬆': {rice:{light:['酪梨溫泉蛋飯碗','鮭魚蔬菜飯碗'],rich:['奶油蘑菇燉飯','起司蛋包飯']},noodles:{light:['番茄蔬菜義大利麵','清炒蒜香義大利麵'],rich:['奶油培根義大利麵','焗烤通心粉']}}
+    },
+    lunch: {
+      '中式家常': {rice:{light:['香煎雞胸蔬菜飯','滷豆腐青菜飯'],rich:['滷肉飯加荷包蛋','三杯雞便當']},noodles:{light:['榨菜肉絲湯麵','清燉牛肉湯麵'],rich:['麻辣乾拌麵','紅燒牛肉麵']}},
+      '西式輕鬆': {rice:{light:['香煎鮭魚藜麥飯','烤雞蔬菜飯碗'],rich:['香料烤雞起司飯','奶油燉飯佐烤蔬菜']},noodles:{light:['青醬雞肉義大利麵','番茄鮮蝦義大利麵'],rich:['奶油蘑菇義大利麵','焗烤千層麵']}}
+    },
+    dinner: {
+      '中式家常': {rice:{light:['清蒸魚蔬菜飯','香菇雞湯配飯'],rich:['咖哩雞肉飯','蒜泥白肉便當']},noodles:{light:['餛飩湯麵','蔬菜雞湯麵'],rich:['麻辣牛肉麵','沙茶炒麵'] }},
+      '西式輕鬆': {rice:{light:['烤鮭魚蔬菜飯碗','香草雞肉溫沙拉飯'],rich:['番茄起司焗飯','牛肉蘑菇燉飯']},noodles:{light:['蒜香鮮蝦義大利麵','清炒蔬菜義大利麵'],rich:['松露奶油義大利麵','起司焗烤筆管麵']}}
+    }
+  };
+  const answers = Array(5).fill(null); let current = 0; let lastResult = '';
+  const byId = id => document.getElementById(id);
+  function renderQuestion(){
+    const q = questions[current]; byId('stepNum').textContent = String(current+1).padStart(2,'0');
+    byId('progressBar').style.width = `${((current+1)/questions.length)*100}%`;
+    byId('question').textContent=q.title; byId('subquestion').textContent=q.hint;
+    byId('choices').innerHTML='';
+    q.options.forEach((o,index)=>{const button=document.createElement('button');button.type='button';button.className='choice'+(answers[current]===index?' selected':'');button.setAttribute('aria-pressed',answers[current]===index?'true':'false');button.innerHTML=`<span class="choice-icon">${o.icon}</span><span class="choice-copy"><b>${o.label}</b><small>${o.detail}</small></span><span class="choice-check">✓</span>`;button.addEventListener('click',()=>{answers[current]=index;renderQuestion()});byId('choices').appendChild(button)});
+    byId('backBtn').classList.toggle('visible',current>0);
+    const next=byId('nextBtn');next.classList.toggle('ready',answers[current]!==null);next.innerHTML=current===questions.length-1?'看我的餐點 <span>✦</span>':'下一題 <span>→</span>';
+  }
+  function showResult(rotate=false){
+    const meal=['','早餐','午餐','晚餐'][answers[0]+1];const style=questions[1].options[answers[1]].label;const staple=answers[2]===0?'rice':'noodles';const taste=answers[3]===0?'light':'rich';const amount=answers[4]===0?'吃飽飽':'輕輕吃';
+    const mealKey=['breakfast','lunch','dinner'][answers[0]];const ideas=mealIdeas[mealKey][style][staple][taste];
+    let pick=ideas[Math.floor(Math.random()*ideas.length)];if(rotate&&ideas.length>1){let tries=0;while(pick===lastResult&&tries++<8)pick=ideas[Math.floor(Math.random()*ideas.length)]}lastResult=pick;
+    byId('resultEmoji').textContent=({'早餐':'🥪','午餐':'🍱','晚餐':'🍜'})[meal];byId('resultTitle').textContent=pick;byId('resultDesc').textContent=`今天的${meal}，就用${style}搭配${answers[2]===0?'飯':'麵'}和${taste==='light'?'清爽口味':'濃郁滋味'}。${answers[4]===0?'想吃飽一點，可以再搭配一份青菜或湯。':'選小份或搭配清爽飲品，輕輕吃也很剛好。'}安心開動！`;
+    byId('resultMeta').innerHTML=[meal,style,answers[2]===0?'飯類':'麵類',taste==='light'?'清爽':'夠味',amount].map(x=>`<span class="pill">${x}</span>`).join('');byId('quiz').classList.add('hide');byId('result').classList.add('show');
+  }
+  byId('nextBtn').addEventListener('click',()=>{if(answers[current]===null)return;if(current<questions.length-1){current++;renderQuestion()}else showResult()});
+  byId('backBtn').addEventListener('click',()=>{if(current>0){current--;renderQuestion()}});
+  byId('restartBtn').addEventListener('click',()=>{answers.fill(null);current=0;lastResult='';byId('result').classList.remove('show');byId('quiz').classList.remove('hide');renderQuestion()});
+  byId('swapBtn').addEventListener('click',()=>showResult(true));renderQuestion();
+</script>
+</body>
+</html>
+
+
